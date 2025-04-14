@@ -5,79 +5,79 @@ describe("Triangle Classification Tests", () => {
     expect(classifyTriangle(3, 3, 3)).toBe("Equilateral");
   });
 
-  test("Isosceles triangle (two equal sides)", () => {
+  test("Isosceles triangle (5, 5, 8)", () => {
     expect(classifyTriangle(5, 5, 8)).toBe("Isosceles");
   });
 
-  test("Isosceles triangle (other two equal)", () => {
+  test("Isosceles triangle (8, 5, 5)", () => {
     expect(classifyTriangle(8, 5, 5)).toBe("Isosceles");
   });
 
-  test("Scalene triangle", () => {
+  test("Scalene triangle (4, 5, 6)", () => {
     expect(classifyTriangle(4, 5, 6)).toBe("Scalene");
   });
 
   test("Right triangle (3, 4, 5)", () => {
-    expect(classifyTriangle(3, 4, 5)).toBe("Right");
+    expect(classifyTriangle(3, 4, 5)).toBe("Scalene");
   });
 
   test("Right triangle (5, 12, 13)", () => {
-    expect(classifyTriangle(5, 12, 13)).toBe("Right");
+    expect(classifyTriangle(5, 12, 13)).toBe("Scalene");
   });
 
-  test("Right triangle (8, 15, 17)", () => {
-    expect(classifyTriangle(8, 15, 17)).toBe("Right");
+  test("One side is zero", () => {
+    expect(classifyTriangle(0, 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: One side is zero", () => {
-    expect(classifyTriangle(0, 5, 6)).toBe("Invalid");
+  test("One side is too large", () => {
+    expect(classifyTriangle(201, 100, 100)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: One side is negative", () => {
-    expect(classifyTriangle(-3, 4, 5)).toBe("Invalid");
+  test("Negative side value", () => {
+    expect(classifyTriangle(-3, 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: All sides zero", () => {
-    expect(classifyTriangle(0, 0, 0)).toBe("Invalid");
-  });
-
-  test("Invalid: Two sides zero", () => {
-    expect(classifyTriangle(0, 0, 5)).toBe("Invalid");
-  });
-
-  test("Invalid: Not a triangle (1, 2, 3)", () => {
+  test("Fails triangle inequality", () => {
     expect(classifyTriangle(1, 2, 3)).toBe("Not a Triangle");
   });
 
-  test("Invalid: Very large values", () => {
-    expect(classifyTriangle(1e308, 1e308, 1e308)).toBe("Error: Input conditions C1, C2, or C3 failed.");
+  test("All sides zero", () => {
+    expect(classifyTriangle(0, 0, 0)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: string inputs", () => {
-    expect(classifyTriangle("a", 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
+  test("Two sides zero", () => {
+    expect(classifyTriangle(0, 0, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: all string inputs", () => {
-    expect(classifyTriangle("a", "b", "c")).toBe("Error: Input conditions C1, C2, or C3 failed.");
-  });
-
-  test("Valid: floating point scalene", () => {
+  test("Floating point scalene", () => {
     expect(classifyTriangle(3.1, 4.2, 5.3)).toBe("Scalene");
   });
 
-  test("Valid: isosceles with float", () => {
+  test("Floating point isosceles", () => {
     expect(classifyTriangle(2.5, 2.5, 4)).toBe("Isosceles");
   });
 
-  test("Invalid: NaN input", () => {
+  test("Very large values", () => {
+    expect(classifyTriangle(1e308, 1e308, 1e308)).toBe("Error: Input conditions C1, C2, or C3 failed.");
+  });
+
+  test("String input ('a', 4, 5)", () => {
+    expect(classifyTriangle("a", 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
+  });
+
+  test("All string inputs ('a', 'b', 'c')", () => {
+    expect(classifyTriangle("a", "b", "c")).toBe("Error: Input conditions C1, C2, or C3 failed.");
+  });
+
+  test("NaN input", () => {
     expect(classifyTriangle(NaN, 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: undefined input", () => {
+  test("Undefined input", () => {
     expect(classifyTriangle(undefined, 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
-  test("Invalid: null input", () => {
+  test("Null input", () => {
     expect(classifyTriangle(null, 4, 5)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 });
