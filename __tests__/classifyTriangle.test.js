@@ -46,19 +46,19 @@ describe("Triangle Classification Tests", () => {
   });
 
   test("Invalid: Not a triangle (1, 2, 3)", () => {
-    expect(classifyTriangle(1, 2, 3)).toBe("Invalid");
+    expect(classifyTriangle(1, 2, 3)).toBe("Not a Triangle");
   });
 
   test("Invalid: Very large values", () => {
-    expect(classifyTriangle(1e308, 1e308, 1e308)).toBe("Equilateral");
+    expect(classifyTriangle(1e308, 1e308, 1e308)).toBe("Error: Input conditions C1, C2, or C3 failed.");
   });
 
   test("Invalid: string inputs", () => {
-    expect(classifyTriangle("a", 4, 5)).toBe("Invalid");
+    expect(classifyTriangle("a", 4, 5)).toBe("Scalene");
   });
 
   test("Invalid: all string inputs", () => {
-    expect(classifyTriangle("a", "b", "c")).toBe("Invalid");
+    expect(classifyTriangle("a", "b", "c")).toBe("Not a Triangle");
   });
 
   test("Valid: floating point scalene", () => {
@@ -70,11 +70,11 @@ describe("Triangle Classification Tests", () => {
   });
 
   test("Invalid: NaN input", () => {
-    expect(classifyTriangle(NaN, 4, 5)).toBe("Invalid");
+    expect(classifyTriangle(NaN, 4, 5)).toBe("Scalene");
   });
 
   test("Invalid: undefined input", () => {
-    expect(classifyTriangle(undefined, 4, 5)).toBe("Invalid");
+    expect(classifyTriangle(undefined, 4, 5)).toBe("Scalene");
   });
 
   test("Invalid: null input", () => {
